@@ -1,0 +1,30 @@
+<div class="row container" style="margin-top:4em">
+<div class="col-md-4 mx-auto">
+    <h2>Connexion</h2>
+    <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" id="email" class="form-control" formControlName="email">
+            <span *ngIf="formControls.email.touched && formControls.email.invalid" class="error">Il faut entrer un correct email</span>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" class="form-control" formControlName="password">
+                <span *ngIf ="formControls.password.touched && formControls.password.hasError('required')" class="error"> Il faut entrer un mot de passe</span>
+                <span *ngIf ="formControls.password.touched && formControls.password.hasError('pattern')" class="error"> Il faut entrer un mot qui contient au moin 6caractères</span>
+            </div>
+            <button type="submit"  [disabled]="signInForm.invalid" class="btn btn-primary btn-block">Connexion</button>
+            <div class="col-md-12">
+                <div class="login-or">
+                    <hr class="hr-or">
+                    <span class="span-or">ou</span>
+                    
+                </div>
+            </div>
+            <button type="button" (click)="SignInWithGoogle()" class="btn btn-danger btn-block">
+                Se connecter avec Gmail
+            </button>
+        </form>
+</div>
+</div>
